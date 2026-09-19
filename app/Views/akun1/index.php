@@ -54,7 +54,8 @@
                                     <td><?= $value->kode_akun1 ?></td>
                                     <td><?= $value->nama_akun1 ?></td>
                                     <td class="text-center" style="width:15%">
-                                        <a href="" class="btn btn-warning"><i class="fas fa-pencil-alt btn-sm"></i>Edit</a>
+                                        <a href="<?= site_url('akun1/edit/' . $value->id_akun1) ?>" class="btn btn-warning"><i
+                                                class="fas fa-pencil-alt btn-sm"></i>Edit</a>
                                         <a href="" class="btn btn-danger"><i class="fas fa-trash btn-sm"></i>Delete</a>
                                     </td>
                                 </tr>
