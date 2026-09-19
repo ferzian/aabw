@@ -9,3 +9,4 @@ $routes->get('/akun1/new', 'Akun1::new');
 $routes->post('/akun1', 'Akun1::store');
 $routes->get('/akun1/edit/(:any)', 'Akun1::edit/$1');
 $routes->put('/akun1/edit/(:any)', 'Akun1::update/$1');
+$routes->delete('/akun1/(:any)', 'Akun1::destroy/$1');
