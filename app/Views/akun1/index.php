@@ -5,8 +5,29 @@
 <!-- dipindahkan dari file 'backend.php' bagian 'content' -->
 <section class="section">
     <div class="section-header">
-        <h1>Blank Page</h1>
+        <!-- <h1>Blank Page</h1> -->
+        <a href="<?= site_url('akun1/new') ?>" class="btn btn-primary">Add New</a>
     </div>
+
+    <!-- untuk menangkap alert session success -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">x</button>
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <!-- session error -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">x</button>
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        </div>
+    <?php endif ?>
 
     <!-- disini isi halaman utamanya -->
     <div class="section-body">
@@ -32,7 +53,7 @@
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $value->kode_akun1 ?></td>
                                     <td><?= $value->nama_akun1 ?></td>
-                                    <td class="text-center" style="width-15%">
+                                    <td class="text-center" style="width:15%">
                                         <a href="" class="btn btn-warning"><i class="fas fa-pencil-alt btn-sm"></i>Edit</a>
                                         <a href="" class="btn btn-danger"><i class="fas fa-trash btn-sm"></i>Delete</a>
                                     </td>

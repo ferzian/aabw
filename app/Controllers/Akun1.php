@@ -15,4 +15,20 @@ class Akun1 extends BaseController
 
         // dd($query);
     }
+
+    public function new()
+    {
+        return view('akun1/new');
+    }
+
+    public function store()
+    {
+        $data = $this->request->getPost();
+        $data = [
+            'kode_akun1' => $this->request->getVar('kode_akun1'),
+            'nama_akun1' => $this->request->getVar('nama_akun1'),
+        ];
+        $this->db->table('akun1s')->insert($data);
+        return redirect()->to(site_url('akun1'))->with('success', 'Data Berhasil Disimpan');
+    }
 }
