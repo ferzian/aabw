@@ -3,8 +3,8 @@
     <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Kode Akun</span></a>
     <ul class="dropdown-menu">
         <li><a class="nav-link" href="<?= site_url('akun1') ?>">Akun - 1</a></li>
-        <li><a class="nav-link" href="#">Akun - 2</a></li>
-        <li><a class="nav-link" href="#">Akun - 3</a></li>
+        <li><a class="nav-link" href="<?= site_url('akun2') ?>">Akun - 2</a></li>
+        <li><a class="nav-link" href="<?= site_url('akun3') ?>">Akun - 3</a></li>
     </ul>
 </li>
 <li class="menu-header">Aktiviti</li>
