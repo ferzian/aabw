@@ -38,7 +38,7 @@ memanggil template dari folder 'layout/backend.php'
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i>Save</button>
-                        <button type="submit" class="btn btn-secondary">Reset</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                 </form>
             </div>
