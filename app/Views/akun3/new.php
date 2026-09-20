@@ -6,7 +6,7 @@ memanggil template dari folder 'layout/backend.php'
 <section class="section">
     <div class="section-header">
         <!-- <h1>Blank Page</h1> -->
-        <a href="<?= site_url('akun2') ?>" class="btn btn-primary">Back</a>
+        <a href="<?= site_url('akun3') ?>" class="btn btn-primary">Back</a>
     </div>
 
     <!-- disini isi halaman utamanya -->
@@ -14,10 +14,10 @@ memanggil template dari folder 'layout/backend.php'
         <!-- mengambil dari folder 'views/akun1/index.php' -->
         <div class="card">
             <div class="card-header">
-                <h4>Tambah Data Akun 2</h4>
+                <h4>Tambah Data Akun 3</h4>
             </div>
             <div class="card-body p-4">
-                <form method="post" action="<?= site_url('akun2') ?>">
+                <form method="post" action="<?= site_url('akun3') ?>">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label>Kode Akun 1</label>
@@ -27,14 +27,22 @@ memanggil template dari folder 'layout/backend.php'
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <!-- isi data baru -->
                     <div class="form-group">
                         <label>Kode Akun 2</label>
-                        <input type="text" class="form-control" name="kode_akun2" placeholder="Kode Akun 2" required>
+                        <select class="form-control" name="kode_akun2">
+                            <?php foreach ($dtakun2 as $key => $value): ?>
+                                <option value="<?= $value->kode_akun2 ?>"><?= $value->nama_akun2 ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <!-- isi data baru -->
+                    <div class="form-group">
+                        <label>Kode Akun 3</label>
+                        <input type="text" class="form-control" name="kode_akun3" placeholder="Kode Akun 3" required>
                     </div>
                     <div class="form-group">
-                        <label>Nama Akun 2</label>
-                        <input type="text" class="form-control" name="nama_akun2" placeholder="Nama Akun 2" required>
+                        <label>Nama Akun 3</label>
+                        <input type="text" class="form-control" name="nama_akun3" placeholder="Nama Akun 3" required>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i>Save</button>

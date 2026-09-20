@@ -5,7 +5,7 @@
 <!-- dipindahkan dari file 'backend.php' bagian 'content' -->
 <section class="section">
     <div class="section-header">
-        <h1>Blank Page</h1>
+        <h1>Selamat Datang</h1>
     </div>
 
     <!-- disini isi halaman utamanya -->

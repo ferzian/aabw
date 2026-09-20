@@ -3,3 +3,4 @@ php spark make:migration CreateAkun1 = membuat migrasi akun 1
 php spark migrate = menjalankan migrasi dari folder 'Database/Migrations'
 php spark migrate:rollback = mengembalikan migrasi
 php spark db:seed SeederAkun1 = menjalankan seeder dari folder Database/Seeds/SeederAkun1.php'
+php spark make:model ModelAkun3 = membuat model akun
