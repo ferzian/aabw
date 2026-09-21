@@ -20,3 +20,9 @@ $routes->get('/akun3/new', 'Akun3::new');
 $routes->get('/akun3/(:segment)/edit', 'Akun3::edit/$1');
 $routes->post('/akun3/new', 'Akun3::create');
 $routes->resource('akun3');
+
+$routes->get('/transaksi/status', 'Transaksi::status');
+$routes->get('/transaksi/akun3', 'Transaksi::akun3');
+$routes->post('/transaksi', 'Transaksi::create');
+$routes->get('/transaksi', 'Transaksi::index');
+$routes->resource('transaksi');

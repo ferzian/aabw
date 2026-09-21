@@ -4,33 +4,29 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateAkun1 extends Migration
+class CreateStatus extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_akun1' => [
+            'id_status' => [
                 'type' => 'INT',
                 'constraint' => 6,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'kode_akun1' => [
-                'type' => 'INT',
-                'constraint' => 6,
-            ],
-            'nama_akun1' => [
+            'status' => [
                 'type' => 'VARCHAR',
-                'constraint' => 20,
+                'constraint' => 50,
             ],
         ]);
 
-        $this->forge->addKey('id_akun1', true);
-        $this->forge->createTable('akun1s');
+        $this->forge->addKey('id_status', true);
+        $this->forge->createTable('tbl_status');
     }
 
     public function down()
     {
-        $this->forge->dropTable('akun1s');
+        $this->forge->dropTable('tbl_status');
     }
 }
