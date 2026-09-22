@@ -19,10 +19,10 @@ memanggil template dari folder 'layout/backend.php'
             <div class="card-body p-4">
                 <form method="post" action="<?= site_url('transaksi') ?>">
                     <?= csrf_field() ?>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Kwitansi</label>
                         <input type="text" class="form-control" name="kwitansi" placeholder="Kwitansi" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" required>
@@ -40,7 +40,7 @@ memanggil template dari folder 'layout/backend.php'
                         <table class="table table-bordered" id="tableLoop">
                             <thead>
                                 <tr>
-                                    <th>No/th>
+                                    <th>No</th>
                                     <th>Kode Akun</th>
                                     <th>Debit</th>
                                     <th>Kredit</th>

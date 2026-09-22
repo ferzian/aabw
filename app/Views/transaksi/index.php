@@ -38,7 +38,7 @@
         <!-- mengambil dari folder 'views/akun1/index.php' -->
         <div class="card">
             <div class="card-header">
-                <h4>Data Akun 3</h4>
+                <h4>Transaksi Jurnal</h4>
             </div>
             <div class="card-body p-4">
                 <div class="table-responsive">
@@ -47,10 +47,10 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Akun 1</th>
-                                <th>Nama Akun 2</th>
-                                <th>Kode Akun 3</th>
-                                <th>Nama Akun 3</th>
+                                <th>Kwitansi</th>
+                                <th>Tanggal</th>
+                                <th>Ket Jurnal</th>
+                                <th>Deskripsi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -72,9 +72,11 @@
                                     <td>
                                         <?= $value->ketjurnal ?>
                                     </td>
-                                    <td class="text-center" style="width:15%">
+                                    <td class="text-center" style="width:20%">
+                                        <a href="<?= site_url('transaksi/' . $value->id_transaksi) ?>"
+                                            class="btn btn-info btn-small"><i class="fas fa-bars btn-small"></i>Detail</a>
                                         <a href="<?= site_url('transaksi/' . $value->id_transaksi) . '/edit' ?>"
-                                            class="btn btn-warning"><i class="fas fa-pencil-alt btn-sm"></i>Edit</a>
+                                            class="btn btn-warning"><i class="fas fa-pencil-alt btn-small"></i>Edit</a>
                                         <form action="<?= site_url('transaksi/' . $value->id_transaksi) ?>" method="post"
                                             id="del-<?= $value->id_transaksi ?>" class="d-inline">
                                             <?= csrf_field() ?>

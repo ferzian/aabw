@@ -21,8 +21,12 @@ $routes->get('/akun3/(:segment)/edit', 'Akun3::edit/$1');
 $routes->post('/akun3/new', 'Akun3::create');
 $routes->resource('akun3');
 
+// agar dropdown akun3 dan status muncul harus berada di atas path "(:any)" dan "(:segment)"
 $routes->get('/transaksi/status', 'Transaksi::status');
 $routes->get('/transaksi/akun3', 'Transaksi::akun3');
+$routes->get('/transaksi/new', 'Transaksi::new');
+$routes->get('/transaksi/(:segment)/edit', 'Transaksi::edit/$1');
+$routes->get('/transaksi/(:any)', 'Transaksi::show/$1');
 $routes->post('/transaksi', 'Transaksi::create');
 $routes->get('/transaksi', 'Transaksi::index');
 $routes->resource('transaksi');

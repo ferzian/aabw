@@ -16,6 +16,8 @@ class Transaksi extends ResourceController
         $this->db = \Config\Database::connect();
         $this->objTransaksi = new ModelTransaksi();
         $this->objNilai = new ModelNilai();
+        $this->objStatus = new ModelStatus();
+        $this->objAkun3 = new ModelAkun3();
     }
     /**
      * Return an array of resource objects, themselves in array format.
@@ -37,7 +39,21 @@ class Transaksi extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $transaksi = $this->objTransaksi->find($id);
+        $akun3 = $this->objAkun3->findAll();
+        $status = $this->objStatus->findAll();
+        $nilai = $this->objNilai->ambilrelasiid($id);
+        $data['dtnilai'] = $nilai;
+
+        if (is_object($transaksi)) {
+            $data['dtakun3'] = $akun3;
+            $data['dtstatus'] = $status;
+            $data['dttransaksi'] = $transaksi;
+
+            return view('transaksi/show', $data);
+        } else {
+            throw \CodeIgniter\Exception\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -59,7 +75,8 @@ class Transaksi extends ResourceController
     {
         $data1 = [
             // untuk data tbl_transaksi
-            'kwitansi' => $this->request->getVar('kwitansi'),
+            // 'kwitansi' => $this->request->getVar('kwitansi'),
+            'kwitansi' => $this->objTransaksi->noKwitansi(),
             'tanggal' => $this->request->getVar('tanggal'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'ketjurnal' => $this->request->getVar('ketjurnal'),
@@ -78,6 +95,7 @@ class Transaksi extends ResourceController
         for ($i = 0; $i < count($kode_akun3); $i++) {
             $data2[] = [
                 'id_transaksi' => $id_transaksi,
+                'kode_akun3' => $kode_akun3[$i],
                 'debit' => $debit[$i],
                 'kredit' => $kredit[$i],
                 'id_status' => $id_status[$i],
@@ -97,7 +115,21 @@ class Transaksi extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $transaksi = $this->objTransaksi->find($id);
+        $akun3 = $this->objAkun3->findAll();
+        $status = $this->objStatus->findAll();
+        $nilai = $this->objNilai->findAll();
+        $data['dtnilai'] = $nilai;
+
+        if (is_object($transaksi)) {
+            $data['dtakun3'] = $akun3;
+            $data['dtstatus'] = $status;
+            $data['dttransaksi'] = $transaksi;
+
+            return view('transaksi/edit', $data);
+        } else {
+            throw \CodeIgniter\Exception\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
@@ -109,7 +141,33 @@ class Transaksi extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $data1 = [
+            'tanggal' => $this->request->getVar('tanggal'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'ketjurnal' => $this->request->getVar('ketjurnal'),
+        ];
+
+        // simpan data ke tbl_transaksi
+        $this->db->table('tbl_transaksi')->where(['id_transaksi' => $id])->update($data1);
+
+        $ids = $this->request->getVar('id_nilai');
+        $kode_akun3 = $this->request->getVar('kode_akun3');
+        $debit = $this->request->getVar('debit');
+        $kredit = $this->request->getVar('kredit');
+        $id_status = $this->request->getVar('id_status');
+
+        foreach ($ids as $key => $value) {
+            $result[] = [
+                'id_nilai' => $ids[$key],
+                'kode_akun3' => $kode_akun3[$key],
+                'debit' => $debit[$key],
+                'kredit' => $kredit[$key],
+                'id_status' => $id_status[$key],
+            ];
+        }
+
+        $this->objNilai->updateBatch($result, 'id_nilai');
+        return redirect()->to(site_url('transaksi'))->with('success', 'Data Berhasil Diupdate');
     }
 
     /**
