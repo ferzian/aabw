@@ -118,7 +118,7 @@ class Transaksi extends ResourceController
         $transaksi = $this->objTransaksi->find($id);
         $akun3 = $this->objAkun3->findAll();
         $status = $this->objStatus->findAll();
-        $nilai = $this->objNilai->findAll();
+        $nilai = $this->objNilai->ambilrelasiid($id);
         $data['dtnilai'] = $nilai;
 
         if (is_object($transaksi)) {
