@@ -6,7 +6,7 @@ memanggil template dari folder 'layout/backend.php'
 <section class="section">
     <div class="section-header">
         <!-- <h1>Blank Page</h1> -->
-        <a href="<?= site_url('transaksi') ?>" class="btn btn-primary">Back</a>
+        <a href="<?= site_url('penyesuaian') ?>" class="btn btn-primary">Back</a>
     </div>
 
     <!-- disini isi halaman utamanya -->
@@ -14,26 +14,36 @@ memanggil template dari folder 'layout/backend.php'
         <!-- mengambil dari folder 'views/akun1/index.php' -->
         <div class="card">
             <div class="card-header">
-                <h4>Edit Data Transaksi</h4>
+                <h4>Edit Data Penyesuaian</h4>
             </div>
             <div class="card-body p-4">
-                <form method="post" action="<?= site_url('transaksi/' . $dttransaksi->id_transaksi . '/edit') ?>">
+                <form method="post" action="<?= site_url('penyesuaian/' . $dtpenyesuaian->id_penyesuaian . '/edit') ?>">
                     <?= csrf_field() ?>
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" required
-                            value="<?= $dttransaksi->tanggal ?>">
+                            value="<?= $dtpenyesuaian->tanggal ?>">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
                         <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsi" required
-                            value="<?= $dttransaksi->deskripsi ?>">
+                            value="<?= $dtpenyesuaian->deskripsi ?>">
                     </div>
                     <div class="form-group">
-                        <label>Ket Jurnal</label>
-                        <input type="text" class="form-control" name="ketjurnal" placeholder="Ket Jurnal" required
-                            value="<?= $dttransaksi->ketjurnal ?>">
+                        <label>Nilai</label>
+                        <input type="text" class="form-control" onkeyup="hitung()" name="nilai" placeholder="Nilai" required
+                            value="<?= $dtpenyesuaian->nilai ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Waktu</label>
+                        <input type="text" class="form-control" onkeyup="hitung()" name="waktu" placeholder="Waktu" required
+                            value="<?= $dtpenyesuaian->waktu ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="text" class="form-control" name="jumlah" placeholder="Jumlah" readonly required
+                            value="<?= $dtpenyesuaian->jumlah ?>">
                     </div>
 
                     <div class="box-body">
@@ -49,7 +59,7 @@ memanggil template dari folder 'layout/backend.php'
                             </thead>
                             <tbody>
                                 <?php $i = 0 ?>
-                                <?php foreach ($dtnilai as $item): ?>
+                                <?php foreach ($dtnilaipenyesuaian as $item): ?>
                                     <?php $i++ ?>
                                     <tr>
                                         <td>
@@ -83,8 +93,8 @@ memanggil template dari folder 'layout/backend.php'
                                             </select>
                                         </td>
                                     </tr>
-                                    <input type="hidden" id="id_nilai" name="id_nilai[]" required
-                                                value="<?= $item->id_nilai ?>">
+                                    <input type="hidden" id="id" name="id[]" required
+                                                value="<?= $item->id ?>">
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

@@ -30,3 +30,8 @@ $routes->get('/transaksi/(:any)', 'Transaksi::show/$1');
 $routes->post('/transaksi', 'Transaksi::create');
 $routes->get('/transaksi', 'Transaksi::index');
 $routes->resource('transaksi');
+
+$routes->get('/penyesuaian/(:segment)/edit', 'Penyesuaian::edit/$1');
+$routes->post('/penyesuaian/(:any)', 'Penyesuaian::delete/$1');
+$routes->get('/penyesuaian/(:any)', 'Penyesuaian::show/$1');
+$routes->resource('penyesuaian');
