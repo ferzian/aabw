@@ -126,4 +126,11 @@ _modules/*
 /phpunit.xml
 
 /public/template/*
-!/public/template/pages
+!/public/template/pages/
+
+# untuk file custom.js
+!/public/template/assets/
+/public/template/assets/*
+!/public/template/assets/js/
+/public/template/assets/js/*
+!/public/template/assets/js/custom.js
