@@ -134,3 +134,10 @@ _modules/*
 !/public/template/assets/js/
 /public/template/assets/js/*
 !/public/template/assets/js/custom.js
+
+# untuk file custom.js
+!/public/template/assets/
+/public/template/assets/*
+!/public/template/assets/css/
+/public/template/assets/css/*
+!/public/template/assets/css/custom.css

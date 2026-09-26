@@ -43,3 +43,10 @@ $routes->resource('jurnalumum');
 $routes->post('/posting/postingpdf', 'Posting::postingpdf');
 $routes->post('/posting', 'Posting::index');
 $routes->resource('posting');
+
+$routes->post('/jurnalpenyesuaian', 'JurnalPenyesuaian::index');
+$routes->resource('jurnalpenyesuaian');
+
+$routes->post('/neracasaldo/neracasaldopdf', 'NeracaSaldo::neracasaldopdf');
+$routes->post('/neracasaldo', 'NeracaSaldo::index');
+$routes->resource('neracasaldo');

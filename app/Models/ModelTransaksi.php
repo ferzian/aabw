@@ -92,4 +92,37 @@ class ModelTransaksi extends Model
 
         return $sql->get()->getResultObject();
     }
+
+    public function get_jpenyesuaian($tglawal, $tglakhir)
+    {
+        $sql = $this->db->table('tbl_nilaipenyesuaian')
+            ->join('tbl_penyesuaian', 'tbl_penyesuaian.id_penyesuaian=tbl_nilaipenyesuaian.id_penyesuaian')
+            ->join('akun3s', 'akun3s.kode_akun3=tbl_nilaipenyesuaian.kode_akun3')
+            ->selectSum('debit', 'jumdebit')
+            ->selectSum('kredit', 'jumkredit')
+            ->select('akun3s.kode_akun3, akun3s.nama_akun3, tbl_penyesuaian.tanggal')
+            ->groupBy('akun3s.kode_akun3');
+        if ($tglawal && $tglakhir) {
+            $sql->where('tanggal >=', $tglawal)->where('tanggal <=', $tglakhir);
+        }
+        $query = $sql->get()->getResultObject();
+        return $query;
+    }
+
+    public function get_neracasaldo($tglawal, $tglakhir)
+    {
+        $sql = $this->db->table('tbl_nilai')
+            ->join('tbl_transaksi', 'tbl_transaksi.id_transaksi=tbl_nilai.id_transaksi')
+            ->join('akun3s', 'akun3s.kode_akun3=tbl_nilai.kode_akun3')
+            ->selectSum('debit', 'jumdebit')
+            ->selectSum('kredit', 'jumkredit')
+            ->select('akun3s.kode_akun3, akun3s.nama_akun3, tbl_transaksi.tanggal, debit, kredit')
+            ->groupBy('akun3s.kode_akun3');
+
+        if ($tglawal && $tglakhir) {
+            $sql->where('tanggal >=', $tglawal)->where('tanggal <=', $tglakhir);
+        }
+        $query = $sql->get()->getResultObject();
+        return $query;
+    }
 }
