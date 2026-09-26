@@ -58,4 +58,38 @@ class ModelTransaksi extends Model
         return $nomor_kwitansi;
     }
 
+    public function get_jurnalumum($tglawal, $tglakhir)
+    {
+        $sql = $this->db->table('tbl_nilai')
+            ->join('tbl_transaksi', 'tbl_transaksi.id_transaksi=tbl_nilai.id_transaksi')
+            ->join('akun3s', 'akun3s.kode_akun3=tbl_nilai.kode_akun3')
+            ->orderBy('id_nilai');
+        if ($tglawal && $tglakhir) {
+            $sql->where('tanggal >=', $tglawal)->where('tanggal <=', $tglakhir);
+        }
+        return $sql->get()->getResultObject();
+    }
+
+    public function get_posting($tglawal, $tglakhir, $kode_akun3)
+    {
+        $sql = $this->db->table('tbl_nilai')
+            ->join('tbl_transaksi', 'tbl_transaksi.id_transaksi=tbl_nilai.id_transaksi')
+            ->join('akun3s', 'akun3s.kode_akun3=tbl_nilai.kode_akun3')
+            ->orderBy('akun3s.kode_akun3');
+        if ($tglawal && $tglakhir) {
+            $sql->where('tanggal >=', $tglawal)->where('tanggal <=', $tglakhir)->where('tbl_nilai.kode_akun3=', $kode_akun3);
+        }
+
+        // Filter tanggal (jika diisi)
+        // if (!empty($tglawal) && !empty($tglakhir)) {
+        //     $sql->where('tanggal >=', $tglawal)->where('tanggal <=', $tglakhir);
+        // }
+
+        // Filter kode akun (jika dipilih)
+        // if (!empty($kode_akun3) && $kode_akun3 !== 'Pilih Kode Akun') {
+        //     $sql->where('tbl_nilai.kode_akun3', $kode_akun3);
+        // }
+
+        return $sql->get()->getResultObject();
+    }
 }

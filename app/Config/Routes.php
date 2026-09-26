@@ -35,3 +35,11 @@ $routes->get('/penyesuaian/(:segment)/edit', 'Penyesuaian::edit/$1');
 $routes->post('/penyesuaian/(:any)', 'Penyesuaian::delete/$1');
 $routes->get('/penyesuaian/(:any)', 'Penyesuaian::show/$1');
 $routes->resource('penyesuaian');
+
+$routes->post('/jurnalumum/cetakjupdf', 'JurnalUmum::cetakjupdf');
+$routes->post('/jurnalumum', 'JurnalUmum::index');
+$routes->resource('jurnalumum');
+
+$routes->post('/posting/postingpdf', 'Posting::postingpdf');
+$routes->post('/posting', 'Posting::index');
+$routes->resource('posting');

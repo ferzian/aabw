@@ -8,8 +8,9 @@
     </ul>
 </li>
 <li class="menu-header">Aktiviti</li>
-<li class="#"><a class="nav-link" href="blank.html"><i class="fas fa-calendar-alt"></i><span>Jurnal Umum</span></a></li>
-<li class="#"><a class="nav-link" href="blank.html"><i class="fas fa-beer"></i><span>Posting</span></a></li>
+<li class="#"><a class="nav-link" href="<?= site_url('jurnalumum') ?>"><i class="fas fa-calendar-alt"></i><span>Jurnal
+            Umum</span></a></li>
+<li class="#"><a class="nav-link" href="<?= site_url('posting') ?>"><i class="fas fa-beer"></i><span>Posting</span></a></li>
 <li class="#"><a class="nav-link" href="blank.html"><i class="fas fa-balance-scale"></i><span>Neraca Saldo</span></a>
 </li>
 <li class="#"><a class="nav-link" href="blank.html"><i class="far fa-square"></i><span>Neraca Lajur</span></a></li>
