@@ -239,9 +239,9 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png"
+                            <img alt="image" src="<?= base_url('imgFiles/' . user()->gbr) ?>"
                                 class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ferzian</div>
+                            <div class="d-sm-none d-lg-inline-block"><?= user()->fullname ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
@@ -256,12 +256,12 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <?php if (logged_in()) { ?>
-                                <!-- <a href="/logout" class="dropdown-item has-icon text-danger">
-                                    <i class="fas fa-sign-out-alt"></i> Logout
-                                </a> -->
-                                <a href="http://localhost/myweb" class="dropdown-item has-icon text-danger">
+                                <a href="/logout" class="dropdown-item has-icon text-danger">
                                     <i class="fas fa-sign-out-alt"></i> Logout
                                 </a>
+                                <!-- <a href="http://localhost/myweb" class="dropdown-item has-icon text-danger">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a> -->
                             <?php } else { ?>
                                 <a href="/login" class="dropdown-item has-icon text-danger">
                                     <i class="fas fa-sign-out-alt"></i> Login

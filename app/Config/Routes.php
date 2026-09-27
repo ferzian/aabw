@@ -54,3 +54,7 @@ $routes->resource('neracasaldo');
 $routes->post('/neracalajur/neracalajurpdf', 'NeracaLajur::neracalajurpdf');
 $routes->post('/neracalajur', 'NeracaLajur::index');
 $routes->resource('neracalajur');
+
+$routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/(:any)', 'Admin::detail/$1', ['filter' => 'role:admin']);

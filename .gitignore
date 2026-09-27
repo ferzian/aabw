@@ -84,7 +84,7 @@ php_errors.log
 #-------------------------
 # Composer
 #-------------------------
-vendor/
+# vendor/
 
 #-------------------------
 # IDE / Development Files
@@ -143,3 +143,25 @@ _modules/*
 !/public/template/assets/css/custom.css
 
 app/Config/Email.php
+
+# Abaikan isi vendor kecuali myth/auth migration
+vendor/*
+!vendor/myth/
+vendor/myth/*
+!vendor/myth/auth/
+vendor/myth/auth/*
+!vendor/myth/auth/src/
+vendor/myth/auth/src/*
+!vendor/myth/auth/src/Database/
+vendor/myth/auth/src/Database/*
+!vendor/myth/auth/src/Database/Migrations/
+vendor/myth/auth/src/Database/Migrations/*
+!vendor/myth/auth/src/Database/Migrations/2017-11-20-223112_create_auth_tables.php
+
+!vendor/myth/auth/src/Config/
+vendor/myth/auth/src/Config/*
+!vendor/myth/auth/src/Config/Auth.php
+
+!vendor/myth/auth/src/Filters/
+vendor/myth/auth/src/Filters/*
+!vendor/myth/auth/src/Filters/RoleFilter.php
