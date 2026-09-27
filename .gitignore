@@ -141,3 +141,5 @@ _modules/*
 !/public/template/assets/css/
 /public/template/assets/css/*
 !/public/template/assets/css/custom.css
+
+app/Config/Email.php
