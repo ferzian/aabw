@@ -125,4 +125,46 @@ class ModelTransaksi extends Model
         $query = $sql->get()->getResultObject();
         return $query;
     }
+
+    public function get_neracalajur($tglawal, $tglakhir)
+    {
+        $where1 = "";
+        $where2 = "";
+
+        if ($tglawal && $tglakhir) {
+            $where1 = "where tb3.tanggal >= '" . $tglawal . "' and tb3.tanggal <= '" . $tglakhir . "' ";
+            $where2 = "where tb4.tanggal >= '" . $tglawal . "' and tb4.tanggal <= '" . $tglakhir . "' ";
+        }
+
+        $sql = $this->db->query('SELECT * FROM (
+        SELECT tbak.nama_akun3, tb1.kode_akun3, tb3.tanggal as tanggal,
+        sum(tb1.debit) as jumdebit,
+        sum(tb1.kredit) as jumkredit,
+        tb2.debit as jumdebits,
+        tb2.kredit as jumkredits
+        FROM tbl_nilai as tb1 
+            join tbl_transaksi as tb3 on tb3.id_transaksi = tb1.id_transaksi left join tbl_nilaipenyesuaian as tb2 on tb1.kode_akun3 = tb2.kode_akun3 
+            join akun3s as tbak on tb1.kode_akun3=tbak.kode_akun3
+            ' . $where1 . '
+            group by tb1.kode_akun3
+        
+        UNION
+        
+        SELECT tbak.nama_akun3, tb2.kode_akun3, tb4.tanggal as tanggal,
+            sum(tb1.debit) as jumdebit,
+            sum(tb1.kredit) as jumkredit,
+            tb2.debit as jumdebits,
+            tb2.kredit as jumkredits
+        FROM tbl_nilai as tb1
+        
+        right join tbl_nilaipenyesuaian as tb2 on tb1.kode_akun3=tb2.kode_akun3
+        join akun3s as tbak on tb2.kode_akun3=tbak.kode_akun3
+        join tbl_penyesuaian as tb4 on tb4.id_penyesuaian=tb2.id_penyesuaian
+        ' . $where2 . '
+        group by tb2.kode_akun3) as tbl_new
+        group by tbl_new.kode_akun3');
+
+        $query = $sql->getResultObject();
+        return $query;
+    }
 }

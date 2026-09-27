@@ -15,7 +15,8 @@
 <li class="#"><a class="nav-link" href="<?= site_url('neracasaldo') ?>"><i class="fas fa-balance-scale"></i><span>Neraca
             Saldo</span></a>
 </li>
-<li class="#"><a class="nav-link" href="blank.html"><i class="far fa-square"></i><span>Neraca Lajur</span></a></li>
+<li class="#"><a class="nav-link" href="<?= site_url('neracalajur') ?>"><i class="far fa-square"></i><span>Neraca
+            Lajur</span></a></li>
 <li class="nav-item dropdown">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
         <span>Transaksi</span></a>

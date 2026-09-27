@@ -50,3 +50,7 @@ $routes->resource('jurnalpenyesuaian');
 $routes->post('/neracasaldo/neracasaldopdf', 'NeracaSaldo::neracasaldopdf');
 $routes->post('/neracasaldo', 'NeracaSaldo::index');
 $routes->resource('neracasaldo');
+
+$routes->post('/neracalajur/neracalajurpdf', 'NeracaLajur::neracalajurpdf');
+$routes->post('/neracalajur', 'NeracaLajur::index');
+$routes->resource('neracalajur');
