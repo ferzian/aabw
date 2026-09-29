@@ -60,4 +60,22 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/(:any)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 
-$routes->resource('labarugi');
+$routes->get('labarugi/labarugipdf', 'Labarugi::labarugipdf');
+$routes->post('labarugi/labarugipdf', 'Labarugi::labarugipdf');
+$routes->get('labarugi', 'Labarugi::index');
+$routes->post('labarugi', 'Labarugi::index');
+
+$routes->get('pmodal/pmodalpdf', 'Pmodal::pmodalpdf');
+$routes->post('pmodal/pmodalpdf', 'Pmodal::pmodalpdf');
+$routes->get('pmodal', 'Pmodal::index');
+$routes->post('pmodal', 'Pmodal::index');
+
+$routes->get('neraca/neracapdf', 'Neraca::neracapdf');
+$routes->post('neraca/neracapdf', 'Neraca::neracapdf');
+$routes->get('neraca', 'Neraca::index');
+$routes->post('neraca', 'Neraca::index');
+
+$routes->get('aruskas/aruskaspdf', 'Aruskas::aruskaspdf');
+$routes->post('aruskas/aruskaspdf', 'Aruskas::aruskaspdf');
+$routes->get('aruskas', 'Aruskas::index');
+$routes->post('aruskas', 'Aruskas::index');
