@@ -98,7 +98,7 @@
                                 <?= number_format($td, 0, ',', ',') ?>
                             </td>
                             <td class="text-right">
-                                <?= number_format($td, 0, ',', ',') ?>
+                                <?= number_format($tk, 0, ',', ',') ?>
                             </td>
                         </tr>
                     </tfoot>

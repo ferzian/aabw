@@ -44,6 +44,7 @@ $routes->post('/posting/postingpdf', 'Posting::postingpdf');
 $routes->post('/posting', 'Posting::index');
 $routes->resource('posting');
 
+$routes->post('/jurnalpenyesuaian/cetak_jppdf', 'JurnalPenyesuaian::cetak_jppdf');
 $routes->post('/jurnalpenyesuaian', 'JurnalPenyesuaian::index');
 $routes->resource('jurnalpenyesuaian');
 
